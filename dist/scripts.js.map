@@ -1,0 +1,1 @@
+{"version":3,"sources":["scripts.js"],"names":["document","querySelectorAll","forEach","anchor","addEventListener","event","preventDefault"],"mappings":"AAGAA,SAASC,iBAAiB,gBAAgBC,SAASC,IAC/CA,EAAOC,iBAAiB,SAAUC,IAC9BA,EAAMC","file":"scripts.js"}

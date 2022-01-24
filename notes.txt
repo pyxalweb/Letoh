@@ -1,0 +1,9 @@
+Gulp, move css/js files, work on header section
+
+* Install Gulp to watch/minify SASS and JS.
+* Created placeholder logo png files (logo@1x, logo@2x, logo@3x) for header.
+* Added FontAwesome files.
+* Added 'normalize.scss'.
+* Added initial SASS variables in 'variables.scss'.
+* Added site header HTML to header.php
+* Added site header CSS to header.scss

@@ -1,0 +1,114 @@
+/* Layout Variables
+============================================================ */
+// Fonts
+$root-text-size: 16px; // should never be less than 16px
+$primary-font-size: 1.1rem;
+$primary-line-height: 2rem;
+$primary-font: 'Montserrat', sans-serif;
+// $secondary-font: 'Playfair Display', serif;
+
+// Colors
+$primary-color: #C3113B; // red
+// $secondary-color: #F00;
+$black: #0D0D0D;
+$white: #fff;
+$white-alt: #F9F9F9;
+$grey-light: #EDEAEA;
+$grey-medium: #767676;
+$grey-dark: #313131;
+
+// Transitions
+$transition-quick: 0.05s;
+$transition-short: 0.15s;
+$transition-medium: 0.3s;
+$transition-long: 0.5s;
+$transition-slow: 1s;
+
+// Viewport Widths: Common
+$viewport-medium: 1360px;
+$viewport-small: 1024px;
+$viewport-tiny: 500px;
+// Viewport Widths: Site-Specific 
+$menu-shrink: 1640px; // reduce size of links in #nav-traditional
+$menu-shrink-2: 1460px; // hide #nav-traditional and show #nav-toggle
+$menu-switch: 1360px; // hide #nav-traditional and show #nav-toggle
+// Viewport Heights: Common
+$viewport-height-medium: 760px;
+
+// Default Widths
+$width-default: 1920px;
+$width-content: 1460px;
+$width-small: 1024px;
+
+// Default Padding
+$padding-default: 0 1em;
+
+// **************************************************
+//  Fonts
+// **************************************************
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* FontAwesome 5 Regular */
+@font-face {
+  font-family: 'Icons-Regular';
+  src: url('fonts/fa-regular-400.eot');
+  src: url('fonts/fa-regular-400.eot') format('embedded-opentype'), url('fonts/fa-regular-400.woff') format('woff'), url('fa-regular-400.ttf') format('truetype'), url('fa-regular-400.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block; // dont use swap for icons bc it displays a 'square'
+}
+
+.icon-regular {
+  font-style: normal;
+  font-family: 'Icons-Regular';
+}
+
+/* FontAwesome 5 Solid */
+/*
+@font-face {
+  font-family: 'Icons-Solid';
+  src: url('styles/fonts/fa-solid-900.eot');
+  src: url('styles/fonts/fa-solid-900.eot') format('embedded-opentype'), url('fonts/fa-solid-900.woff') format('woff'), url('fa-solid-900.ttf') format('truetype'), url('fa-solid-900.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block; // dont use swap for icons bc it displays a 'square'
+}
+
+.icon-solid {
+  font-style: normal;
+  font-family: 'Icons-Solid';
+}
+*/
+
+/* FontAwesome 5 Light */
+/*
+@font-face {
+  font-family: 'Icons-Light';
+  src: url('fonts/fa-light-300.eot');
+  src: url('fonts/fa-light-300.eot') format('embedded-opentype'), url('fonts/fa-light-300.woff') format('woff'), url('fa-light-300.ttf') format('truetype'), url('fa-light-300.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block; // dont use swap for icons bc it displays a 'square'
+}
+
+.icon-light {
+  font-style: normal;
+  font-family: 'Icons-Light';
+}
+*/
+
+/* FontAwesome 5 Brands */
+@font-face {
+  font-family: 'Icons-Brands';
+  src: url('styles/fonts/fa-brands-400.eot');
+  src: url('styles/fonts/fa-brands-400.eot') format('embedded-opentype'), url('fonts/fa-brands-400.woff') format('woff'), url('fa-brands-400.ttf') format('truetype'), url('fa-brands-400.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block; // dont use swap for icons bc it displays a 'square'
+}
+
+.icon-brands {
+  font-style: normal;
+  font-family: 'Icons-Brands';
+}

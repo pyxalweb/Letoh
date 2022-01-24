@@ -1,0 +1,267 @@
+// **************************************************
+//  Header
+// **************************************************
+header#site-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+  background: $white;
+}
+
+.header-container {
+  max-width: $width-default;
+  margin: 0 auto;
+  padding: 1.1em 1em;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+
+
+
+
+// **************************************************
+//  Logo
+// **************************************************
+.header-logo {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  a {
+    &:focus {
+      outline-offset: 0.25em;
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+
+
+
+// **************************************************
+//  Site Navigation
+// **************************************************
+.header-nav {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  @media (max-width: $menu-switch) {
+    column-gap: 1em;
+  }
+}
+
+
+
+
+// **************************************************
+//  Navigation Menu Traditional
+// **************************************************
+.nav-traditional {
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+  display: block;
+
+  @media (max-width: $menu-switch) {
+    display: none;
+  }
+
+  >ul {
+    margin: 0;
+    padding: 0;
+
+    >li {
+      display: inline-block;
+      position: relative;
+      line-height: 3rem;
+
+      >a {
+        padding: 0.3em 0.6em;
+        color: $black;
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        text-decoration: none;
+
+        @media (max-width: $menu-shrink) {
+          padding: 0.3em;
+          font-size: 1rem;
+        }
+      }
+
+      &.standard {
+        >a {
+          margin: 0 0.8em 0 0;
+          transition: color $transition-long;
+
+          @media (max-width: $menu-shrink-2) {
+            padding: 0 0.3em 0 0;
+          }
+
+          &:hover,
+          &:focus,
+          &.current-page {
+            color: $primary-color;
+          }
+
+          &.not-a-link {
+            &:hover,
+            &:focus {
+              border-color: transparent;
+            }
+          }
+        }
+      }
+
+      &.highlight {
+        // add properties here
+      }
+
+      &.hide-large-viewports {
+        // add properties here
+      }
+
+      >ul {
+        background: $primary-color;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+        display: none;
+        position: absolute;
+        top: auto;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        white-space: nowrap;
+
+        >li {
+          line-height: 3rem;
+
+          >a {
+            display: block;
+            color: $white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 0.3em 1em 0.3em 0.6em;
+            transition: color $transition-long, background-color $transition-long;
+
+            &:hover,
+            &:focus {
+              background-color: $white;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+
+      // display dropdown on hover/focus
+      &:hover,
+      &:focus {
+        >ul {
+          display: block;
+        }
+      }
+
+      // display dropdown on keyboard toggle (requires js)
+      >ul.is-focused {
+        display: block;
+      }
+    }
+  }
+}
+
+
+
+// **************************************************
+//  Navigation Menu Overlay Toggle
+// **************************************************
+.overlay-nav-toggle {
+  opacity: 0;
+  display: none;
+  padding: 8px 1px;
+
+  span {
+    display: none;
+  }
+
+  @media (max-width: $menu-switch) {
+    opacity: 1;
+    display: block;
+  }
+
+  #hamburger_menu {
+    #line-top {
+      transform: translateY(31.5px);
+    }
+
+    #line-bottom {
+      transform: translateY(53.5px);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    #hamburger_menu {
+      #line-top,
+      #line-middle,
+      #line-bottom {
+        stroke: $primary-color;
+        transition: all $transition-long ease-in-out;
+      }
+    }
+  }
+
+  &:hover,
+  &.clicked {
+    #hamburger_menu {
+      #line-top,
+      #line-middle,
+      #line-bottom {
+        stroke: $primary-color;
+        transition: all $transition-long ease-in-out;
+      }
+
+      #line-top {
+        transform: translateY(33.5px);
+      }
+
+      #line-bottom {
+        transform: translateY(51.5px);
+      }
+    }
+  }
+
+  &:focus {
+    outline: none
+  }
+}
+
+
+
+
+// **************************************************
+//  Booking Form Toggle
+// **************************************************
+.nav-booking {
+  position: relative;
+
+  @media (max-width: $viewport-tiny) {
+    display: none;
+  }
+
+  .booking-toggle {
+    // @extend %button;
+  }
+}

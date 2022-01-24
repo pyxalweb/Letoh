@@ -1,11 +1,8 @@
 <?php
 
 function theme_files() {
-    wp_enqueue_style('google-fonts', '//fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&display=swap');
-    wp_enqueue_style('main-styles', get_theme_file_uri('/css/main.css'));
-
-    wp_enqueue_script('font-awesome', '//kit.fontawesome.com/9a167720af.js', NULL, '1.0', true);
-    wp_enqueue_script('main-scripts', get_theme_file_uri('/js/main.js'), NULL, '1.0', true);
+    wp_enqueue_style('main-styles', get_theme_file_uri('/dist/styles.css'));
+    wp_enqueue_script('main-scripts', get_theme_file_uri('/dist/scripts.js'), NULL, '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'theme_files');
 
@@ -20,5 +17,7 @@ function theme_favicon(){ ?>
     <link rel="manifest" href="<?php echo get_stylesheet_directory_uri(); ?>/site.webmanifest">
     <?php }
 add_action('wp_head','theme_favicon');
+
+add_filter( 'show_admin_bar', '__return_false' );
 
 ?>
