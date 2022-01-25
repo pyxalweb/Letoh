@@ -1,0 +1,140 @@
+// **************************************************
+//  Default swiper.js styles
+// **************************************************
+%swiper-default {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+
+  .swiper-slide {
+    height: 100%;
+
+    img {
+      display: block;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+    }
+  }
+}
+
+
+
+
+// **************************************************
+//  Default Previous/Next Arrows (for swiper.js)
+// **************************************************
+.arrows-default {
+  .swiper {
+    .swiper-button-next,
+    .swiper-button-prev {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 300;
+      background: none;
+      border: none;
+      font-size: 0;
+      cursor: pointer;
+
+      &:after {
+        color: $white;
+        font-size: 2.5rem;
+        font-family: 'Icons-Regular';
+        transition: color $transition-long;
+      }
+
+      &:hover,
+      &:focus {
+        &:after {
+          color: $primary-color;
+        }
+      }
+
+      &.hide {
+        display: none;
+      }
+    }
+
+    .swiper-button-prev {
+      left: 1vw;
+
+      &:after {
+        content: '\F053';
+      }
+    }
+
+    .swiper-button-next {
+      right: 1vw;
+
+      &:after {
+        content: '\F054';
+      }
+    }
+  }
+}
+
+
+
+
+// **************************************************
+//  Masthead Slideshow
+// **************************************************
+#site-masthead {
+  position: relative;
+  background: $black;
+
+  // swiper.js
+  .masthead-slideshow {
+    .swiper {
+      @extend %swiper-default;
+
+      .swiper-wrapper {
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: block;
+          background: rgba(0, 0, 0, 0.4);
+          z-index: 100;
+        }
+      }
+
+      // hide the arrows on smaller viewports
+      .swiper-button-next,
+      .swiper-button-prev {
+        @media(max-width: $viewport-small) {
+          display: none;
+        }
+      }
+    }
+
+    &.homepage {
+      .swiper {
+        max-height: 960px;
+      }
+    }
+
+    &.interior {
+      .swiper {
+        max-height: 600px;
+
+        @media (max-width: $viewport-small),
+               (max-height: $viewport-height-medium) {
+          max-height: 50vh;
+        }
+
+        .swiper-wrapper {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

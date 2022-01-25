@@ -52,8 +52,8 @@ $padding-default: 0 1em;
 /* FontAwesome 5 Regular */
 @font-face {
   font-family: 'Icons-Regular';
-  src: url('fonts/fa-regular-400.eot');
-  src: url('fonts/fa-regular-400.eot') format('embedded-opentype'), url('fonts/fa-regular-400.woff') format('woff'), url('fa-regular-400.ttf') format('truetype'), url('fa-regular-400.svg') format('svg');
+  src: url('../fonts/fa-regular-400.eot');
+  src: url('../fonts/fa-regular-400.eot') format('embedded-opentype'), url('../fonts/fa-regular-400.woff') format('woff'), url('fa-regular-400.ttf') format('truetype'), url('fa-regular-400.svg') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block; // dont use swap for icons bc it displays a 'square'
@@ -68,8 +68,8 @@ $padding-default: 0 1em;
 /*
 @font-face {
   font-family: 'Icons-Solid';
-  src: url('styles/fonts/fa-solid-900.eot');
-  src: url('styles/fonts/fa-solid-900.eot') format('embedded-opentype'), url('fonts/fa-solid-900.woff') format('woff'), url('fa-solid-900.ttf') format('truetype'), url('fa-solid-900.svg') format('svg');
+  src: url('styles/../fonts/fa-solid-900.eot');
+  src: url('styles/../fonts/fa-solid-900.eot') format('embedded-opentype'), url('../fonts/fa-solid-900.woff') format('woff'), url('fa-solid-900.ttf') format('truetype'), url('fa-solid-900.svg') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block; // dont use swap for icons bc it displays a 'square'
@@ -85,8 +85,8 @@ $padding-default: 0 1em;
 /*
 @font-face {
   font-family: 'Icons-Light';
-  src: url('fonts/fa-light-300.eot');
-  src: url('fonts/fa-light-300.eot') format('embedded-opentype'), url('fonts/fa-light-300.woff') format('woff'), url('fa-light-300.ttf') format('truetype'), url('fa-light-300.svg') format('svg');
+  src: url('../fonts/fa-light-300.eot');
+  src: url('../fonts/fa-light-300.eot') format('embedded-opentype'), url('../fonts/fa-light-300.woff') format('woff'), url('fa-light-300.ttf') format('truetype'), url('fa-light-300.svg') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block; // dont use swap for icons bc it displays a 'square'
@@ -101,8 +101,8 @@ $padding-default: 0 1em;
 /* FontAwesome 5 Brands */
 @font-face {
   font-family: 'Icons-Brands';
-  src: url('styles/fonts/fa-brands-400.eot');
-  src: url('styles/fonts/fa-brands-400.eot') format('embedded-opentype'), url('fonts/fa-brands-400.woff') format('woff'), url('fa-brands-400.ttf') format('truetype'), url('fa-brands-400.svg') format('svg');
+  src: url('styles/../fonts/fa-brands-400.eot');
+  src: url('styles/../fonts/fa-brands-400.eot') format('embedded-opentype'), url('../fonts/fa-brands-400.woff') format('woff'), url('fa-brands-400.ttf') format('truetype'), url('fa-brands-400.svg') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block; // dont use swap for icons bc it displays a 'square'

@@ -1,8 +1,8 @@
 @import 'normalize.scss';
 @import 'variables.scss';
+
+@import 'swiper.scss';
+
 @import 'layout.scss';
 @import 'header.scss';
-
-a {
-  color: rebeccapurple;
-}
+@import 'galleries.scss';

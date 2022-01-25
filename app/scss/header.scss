@@ -184,72 +184,6 @@ header#site-header {
 
 
 
-// **************************************************
-//  Navigation Menu Overlay Toggle
-// **************************************************
-.overlay-nav-toggle {
-  opacity: 0;
-  display: none;
-  padding: 8px 1px;
-
-  span {
-    display: none;
-  }
-
-  @media (max-width: $menu-switch) {
-    opacity: 1;
-    display: block;
-  }
-
-  #hamburger_menu {
-    #line-top {
-      transform: translateY(31.5px);
-    }
-
-    #line-bottom {
-      transform: translateY(53.5px);
-    }
-  }
-
-  &:hover,
-  &:focus {
-    #hamburger_menu {
-      #line-top,
-      #line-middle,
-      #line-bottom {
-        stroke: $primary-color;
-        transition: all $transition-long ease-in-out;
-      }
-    }
-  }
-
-  &:hover,
-  &.clicked {
-    #hamburger_menu {
-      #line-top,
-      #line-middle,
-      #line-bottom {
-        stroke: $primary-color;
-        transition: all $transition-long ease-in-out;
-      }
-
-      #line-top {
-        transform: translateY(33.5px);
-      }
-
-      #line-bottom {
-        transform: translateY(51.5px);
-      }
-    }
-  }
-
-  &:focus {
-    outline: none
-  }
-}
-
-
-
 
 // **************************************************
 //  Booking Form Toggle
@@ -262,6 +196,107 @@ header#site-header {
   }
 
   .booking-toggle {
-    // @extend %button;
+    @extend %button;
+  }
+}
+
+
+
+
+// **************************************************
+//  Banners
+// **************************************************
+%banner {
+  display: block;
+  width: 100%;
+}
+
+%banner-content {
+  position: relative;
+  width: 100%;
+  max-width: $width-default;
+  padding: 0.65em 3em;
+  margin: 0 auto;
+  text-align: center;
+}
+
+%banner-text {
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  font-weight: 500;
+  color: $white;
+}
+
+
+
+
+// **************************************************
+//  Banners: Message Bar
+// **************************************************
+#banner {
+  @extend %banner;
+  z-index: 20000;
+  background: $black;
+  opacity: 1;
+
+  &.hide {
+    display: none;
+  }
+}
+
+.banner-content {
+  @extend %banner-content;
+  @extend %banner-text;
+
+  p {
+    @extend %banner-text;
+    margin: 0;
+  }
+
+  a {
+    color: $white;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      background: $white;
+      color: $primary-color;
+      outline: 2px solid $white;
+    }
+
+    &:after {
+      content: '\f0c1';
+      font-family: 'Icons-Regular';
+      margin-left: 0.4em;
+    }
+
+    &.banner-close {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50px;
+      height: 100%;
+      background: $grey-dark;
+      font-family: 'Icons-Regular';
+      font-size: 0;
+      color: $white;
+      text-decoration: none;
+      outline: none;
+
+      &:before {
+        content: '\f00d';
+        font-size: 1.25rem;
+        line-height: 1.25rem;
+      }
+
+      &:hover,
+      &:focus {
+        background: $primary-color;
+      }
+    }
   }
 }
