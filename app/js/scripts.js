@@ -137,6 +137,301 @@ accessibleDropdowns();
 
 
 // **************************************************
+//  Navigation Menu Overlay
+//  Toggle
+// **************************************************
+const toggleNav = () => {
+    // show
+    const show = () => {
+        navOverlay.classList.toggle('show');
+    };
+
+    // hide
+    const hide = () => {
+        navOverlay.classList.remove('show');
+    };
+
+    // set all link elements to tabindex="0"
+    const enable = () => {
+        navOverlayLink.forEach((element) => {
+            element.setAttribute('tabindex', '0');
+        });
+    };
+
+    // set all link elements to tabindex="-1"
+    const disable = () => {
+        navOverlayLink.forEach((element) => {
+            element.setAttribute('tabindex', '-1');
+        });
+    };
+    disable(); // run this on page load
+
+    // focus the overlay 
+    const focusOverlay = () => {
+        navOverlay.setAttribute('tabindex', '0');
+        navOverlay.focus();
+        navOverlayToggle.classList.add('clicked'); // mimics the toggle's hover/focus CSS
+    };
+
+    // focus the toggle 
+    const focusToggle = () => {
+        navOverlay.setAttribute('tabindex', '-1');
+        navOverlayToggle.focus();
+        navOverlayToggle.classList.remove('clicked');
+    };
+
+    // collapse dropdowns
+    const collapseDropdowns = () => {
+        const dropdownToggle = navOverlay.querySelector('.dropdown-toggle');
+        const navOverlaySub = navOverlay.querySelector('.nav-sub');
+
+        if (dropdownToggle) {
+            dropdownToggle.classList.remove('show');
+            navOverlaySub.classList.remove('show');
+        }
+    }
+
+    // all functions to 'open' the menu
+    const open = () => {
+        show();
+        enable();
+        focusOverlay();
+    }
+
+    // all functions to 'close' the menu
+    const close = () => {
+        hide();
+        disable();
+        focusToggle();
+        collapseDropdowns();
+    }
+
+    // toggle is clicked
+    navOverlayToggle.addEventListener('click', () => {
+        if (!navOverlay.classList.contains('show')) {
+            open();
+        } else {
+            close();
+        };
+    });
+
+    // hide when 'Escape' key is pressed
+    document.addEventListener('keydown', (event) => {
+        if ((navOverlay.classList.contains('show')) && (event.keyCode == 27)) {
+            close();
+        }
+    });
+
+    // hide when user clicks anywhere outside of the overlay
+    document.addEventListener('click', (event) => {
+        if (navOverlay.classList.contains('show')) {
+            let targetElement = event.target;
+
+            do {
+                if (targetElement == navOverlay || targetElement == navOverlayToggle) {
+                    return;
+                }
+                targetElement = targetElement.parentNode;
+            } while (targetElement);
+
+            close();
+        };
+    });
+
+    // hide when a user scrolls up/down
+    // DISABLED
+    // document.addEventListener('scroll', () => {
+    //     close();
+    // });
+
+    // hide when user clicks 'x' icon (small viewports only)
+    navOverlayClose.addEventListener('click', (event) => {
+        if (navOverlay.classList.contains('show')) {
+            close();
+        }
+    })
+};
+toggleNav();
+
+
+
+
+// **************************************************
+//  Navigation Menu Overlay
+//  Dropdowns
+// **************************************************
+const overlayDropdowns = () => {
+    // apply 'has-dropdown' classes and create 'dropdown-toggle' elements
+    navOverlayItem.forEach((element) => {
+        const navOverlaySub = element.querySelector('.nav-sub');
+        const navOverlayLink = element.querySelector('.nav-link');
+
+        if (navOverlaySub !== null) {
+            element.classList.add('has-dropdown');
+
+            navOverlayLink.insertAdjacentHTML('beforeend', '<span class="dropdown-toggle" aria-label="Expand or Collapse Dropdown" role="button" tabindex="-1"></span>');
+        };
+    });
+
+    // toggle is clicked
+    navOverlay.querySelectorAll('.has-dropdown').forEach((element) => {
+        const dropdownToggle = element.querySelector('.dropdown-toggle');
+        const navOverlaySub = element.querySelector('.nav-sub');
+
+        if (dropdownToggle) {
+            // note:  do not use arrow functions here!
+            //        they don't allow the 'this' keyword
+
+            // click
+            dropdownToggle.addEventListener('click', function(event) {
+                this.classList.toggle('show');
+                navOverlaySub.classList.toggle('show');
+                event.preventDefault();
+            });
+
+            // 'return' key (accessibility)
+            dropdownToggle.addEventListener('keydown', function(event) {
+                if (event.keyCode == 13) {
+                    this.classList.toggle('show');
+                    navOverlaySub.classList.toggle('show');
+                    event.preventDefault();
+                };
+            });
+        };
+    });
+
+    // set tabindex to 0 when overlay is displayed and -1 when hidden
+    navOverlayToggle.addEventListener('click', (element) => {
+        const dropdownToggle = document.querySelectorAll('.dropdown-toggle');
+
+        if (navOverlay.classList.contains('show')) {
+            dropdownToggle.forEach((element) => {
+                element.setAttribute('tabindex', '0');
+            });
+        }
+        else {
+            dropdownToggle.forEach((element) => {
+                element.setAttribute('tabindex', '-1');
+            });
+        };
+    });
+}
+overlayDropdowns();
+
+
+
+
+// **************************************************
+//  Booking Form
+//  Toggle
+// **************************************************
+const toggleBooking = () => {
+    // get DOM elements
+    const bookingToggle = document.querySelector('.booking-toggle');
+    const bookingOverlay = document.querySelector('.overlay-booking');
+    const bookingClose = document.querySelector('.overlay-booking .booking-close');
+
+    // flatpickr.js replaces each input[type="date"] element with its own input[type="hidden"] element and input[type="text"] element, so we need to make sure these generated elements are accounted for when setting tabindex values
+    const bookingInputs = '.overlay-booking form .booking-input *';
+    let bookingInputsLinks = document.querySelectorAll(bookingInputs);
+
+    // show
+    const show = () => {
+        bookingToggle.classList.toggle('has-focus');
+        bookingOverlay.classList.toggle('show');
+        bookingOverlay.setAttribute('tabindex', '0');
+        bookingOverlay.focus();
+    };
+
+    // hide
+    const hide = () => {
+        bookingToggle.classList.remove('has-focus');
+        bookingOverlay.classList.remove('show');
+        bookingOverlay.setAttribute('tabindex', '-1');
+        bookingOverlay.blur();
+        bookingToggle.blur();
+    };
+
+    // set all input and link elements to tabindex="0"
+    const enable = () => {
+        let bookingInputsLinks = document.querySelectorAll(bookingInputs);
+
+        bookingInputsLinks.forEach((element) => {
+            element.setAttribute('tabindex', '0');
+        });
+    };
+
+    // set all input and link elements to tabindex="-1"
+    const disable = () => {
+        let bookingInputsLinks = document.querySelectorAll(bookingInputs);
+
+        bookingInputsLinks.forEach((element) => {
+            element.setAttribute('tabindex', '-1');
+        });
+    };
+    disable(); // run this on page load
+
+    // toggle is clicked
+    bookingToggle.addEventListener('click', (event) => {
+        if (!bookingOverlay.classList.contains('show')) {
+            show();
+            enable();
+        } else {
+            hide();
+            disable();
+        }
+
+        event.preventDefault();
+    });
+
+    // hide when 'Escape' key is pressed
+    document.addEventListener('keydown', (event) => {
+        if ((bookingOverlay.classList.contains('show')) && (event.keyCode == 27)) {
+            hide();
+            disable();
+        }
+    });
+
+    // hide when user clicks anywhere outside of the overlay or flatpickr-calendar
+    document.addEventListener('click', (event) => {
+        if (bookingOverlay.classList.contains('show')) {
+            // get the flatpickr.js DOM elements
+            const fpArrivalCalendar = document.querySelector('.arrival-calendar');
+            const fpDepartureCalendar = document.querySelector('.departure-calendar');
+
+            let targetElement = event.target;
+
+            do {
+                if (targetElement == bookingOverlay || targetElement == bookingToggle || targetElement == fpArrivalCalendar || targetElement == fpDepartureCalendar) {
+                    return;
+                }
+                targetElement = targetElement.parentNode;
+            } while (targetElement);
+
+            hide();
+            disable();
+        };
+    });
+
+    // hide when user scrolls up/down
+    // DISABLED
+    // document.addEventListener('scroll', () => {
+    //     hide();
+    //     disable();
+    // });
+
+    // hide when user clicks 'X' icon in overlay
+    bookingClose.addEventListener('click', () => {
+        hide();
+        disable();
+    });
+};
+toggleBooking();
+
+
+
+
+// **************************************************
 // Masthead Slideshow Height
 // **************************************************
 const setMastheadHeight = () => {

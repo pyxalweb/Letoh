@@ -1,26 +1,7 @@
-Homepage above the fold: Banner, Header, Navigation, Masthead, Misc
-
-** Banner **
-* Added 'banner' HTML to 'inc-site-alert.php' and CSS to 'header.scss'.
-* Added 'banner' JS to hide the 'banner' element when the 'X' icon is clicked.
-* Changed path location for 'fonts' directory.
+Skip Navigation, Navigation Menu Overlay, Booking Overlay
 
 ** Header **
-* Added '%button' placeholder selector in 'layout.scss'.
-* Created new 'inc-site-header.php' file and moved 'header' HTML from 'header.php'
-* Added 'nav-booking' CSS to 'header.scss'
-
-** Navigation **
-* Added 'accessibleDropdowns' function to scripts.js
-
-** Masthead **
-* Created new 'temp-dir-photos' directory to contain royalty free placeholder photos. These will be uploaded via Wordpress later.
-* Added 'masthead' HTML with placeholder photos and CSS to 'layout.scss'.
-* Called 'swiper.js' in 'functions.php'.
-* Created new 'swiper.scss' file with default Swiper 7.4.1 Theme CSS. Optimized this file by removing stuff I know won't ever likely be used.
-* Created new 'galleries.scss' file with default CSS to use for all 'swiper.js' galleries as well as the Homepage's 'masthead' section.
-* Added 'setMastheadHeight' function to scripts.js
-
-** Misc **
-* Wrapped all of scripts.js within an Immediately Invoked Function Expression (IIFE)
-* Added "Common DOM elements" to scripts.js
+* Added 'Skip Navigation" accessibility feature.
+* Added 'Navigation Menu Toggle' and 'Navigation Menu Overlay'.
+* Added 'Booking Overlay'.
+* Added mobile "Book Now" link that displays below the header.

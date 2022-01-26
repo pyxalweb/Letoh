@@ -1,5 +1,6 @@
 <?php
 	get_header();
+	include get_template_directory() . '/inc-site-skip-nav.php';
 	include get_template_directory() . '/inc-site-alert.php';
 	include get_template_directory() . '/inc-site-header.php';
 ?>

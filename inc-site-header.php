@@ -9,27 +9,7 @@
 		<div class="header-nav">
 			<nav class="nav-traditional" aria-label="Navigation Menu">
 				<ul>
-					<li class="nav-item standard"><a href="/" class="nav-link">Specials</a></li>
-					<li class="nav-item standard">
-						<a href="/" class="nav-link">Rooms</a>
-						<ul class="nav-sub">
-							<li><a class="nav-link" href="/">ADA / Accessibility</a></li>
-							<li><a class="nav-link" href="/">FAQs &amp; Policies</a></li>
-							<li><a class="nav-link" href="/">Guest Comments</a></li>
-						</ul>
-					</li>
-					<li class="nav-item standard"><a class="nav-link" href="/">Amenities</a></li>
-					<li class="nav-item standard"><a class="nav-link" href="/">Dining</a></li>
-					<li class="nav-item standard">
-						<a class="nav-link" href="/">Events</a>
-						<ul class="nav-sub">
-							<li><a class="nav-link" href="/">Request Information</a></li>
-						</ul>
-					</li>
-					<li class="nav-item standard"><a class="nav-link" href="/">Groups</a></li>
-					<li class="nav-item standard"><a class="nav-link" href="/">Gallery</a></li>
-					<li class="nav-item standard"><a class="nav-link" href="/">Area Guide</a></li>
-					<li class="nav-item standard"><a class="nav-link" href="/">Contact</a></li>
+					<?php include("inc-site-navigation.php") ?>
 				</ul>
 			</nav>
 
@@ -37,7 +17,31 @@
 				<a class="booking-toggle" href="#" aria-label="Toggle Booking Overlay">Book Now</a>
 			</div>
 
-			<!-- <a class="overlay-nav-toggle" href="#" aria-label="Toggle Navigation Menu Overlay"></a> -->
+			<a class="overlay-nav-toggle" href="#" aria-label="Toggle Navigation Menu Overlay">
+                <?php include("inc-site-navigation-svg.php"); ?>
+            </a>
 		</div>
 	</div>
+
+	<div class="nav-booking-mobile">
+        <a class="booking-link" href="#" target="_blank">Book Now</a>
+    </div>
+
+	<div id="site-overlays">
+        <nav class="overlay-nav" aria-label="Alternative Navigation Menu">
+            <div class="nav-close-container">
+                <a class="nav-close" href="#" aria-label="Close Reservations"></a>
+            </div>
+
+            <ul>
+                <?php include("inc-site-navigation.php"); ?>
+            </ul>
+        </nav>
+
+        <div id="booking-1" class="overlay-booking" role="form" aria-label="Make a Reservation">
+            <a class="booking-close" href="#" aria-label="Close Reservations"></a>
+
+            <?php include("inc-site-booking.php"); ?>
+        </div>
+    </div>
 </header>
