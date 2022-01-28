@@ -196,3 +196,57 @@ em strong a {
     padding: 0.25em 1.45em;
   }
 }
+
+
+
+
+// **************************************************
+//  Extra Booking
+// **************************************************
+.extra-booking {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px;
+  z-index: 10000;
+  background: rgba(0, 0, 0, 0.5);
+
+  @media (max-width: $viewport-medium) {
+    display: none;
+  }
+
+  .booking {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    column-gap: 2em;
+    padding: 2em;
+    background: $white-alt;
+
+    .booking-input {
+      flex: 1 1 26%;
+
+      &:last-of-type {
+        flex: 1 1 22%;
+      }
+
+      // input icons
+      &.date,
+      &.select {
+        &:after {
+          top: 45%;
+        }
+      }
+    }
+  }
+}
+
+.interior {
+  .extra-booking {
+    display: none;
+  }
+}

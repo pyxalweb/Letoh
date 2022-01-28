@@ -80,6 +80,66 @@
 
 
 // **************************************************
+//  Alternative Previous/Next Arrows (for swiper.js)
+// **************************************************
+.arrows-alternate {
+  .swiper {
+    .swiper-button-next,
+    .swiper-button-prev {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 300;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 0;
+      border: none;
+      width: 44px;
+      height: 44px;
+      font-size: 0;
+      cursor: pointer;
+
+      &:after {
+        color: #969595;
+        font-size: 1.5rem;
+        font-family: 'Icons-Regular';
+        transition: all $transition-long;
+      }
+
+      &:hover,
+      &:focus {
+        background: #fff;
+
+        &:after {
+          color: $primary-color;
+        }
+      }
+    }
+
+    .swiper-button-prev {
+      left: 1vw;
+
+      &:after {
+        content: '\F053';
+      }
+    }
+
+    .swiper-button-next {
+      right: 1vw;
+
+      &:after {
+        content: '\F054';
+      }
+    }
+  }
+}
+
+
+
+
+// **************************************************
 //  Masthead Slideshow
 // **************************************************
 #site-masthead {

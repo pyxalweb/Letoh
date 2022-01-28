@@ -1,7 +1,7 @@
-Skip Navigation, Navigation Menu Overlay, Booking Overlay
+-
 
-** Header **
-* Added 'Skip Navigation" accessibility feature.
-* Added 'Navigation Menu Toggle' and 'Navigation Menu Overlay'.
-* Added 'Booking Overlay'.
-* Added mobile "Book Now" link that displays below the header.
+* Added flatpickr.js and flatpickr.scss for booking overlay.
+* Added Flatpickr JS to scripts.js. Form validation that sets the departure date 2 days after.the selected arrival date by default and checks to ensure dates are not in the past, etc.
+* Added secondary booking section.
+* Replaced some text with lorem ipsum placeholder text.
+* Added first Homepage content section with 3 placeholder photos and content.

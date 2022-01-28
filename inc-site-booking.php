@@ -1,4 +1,4 @@
-<form class="booking" name="booking" method="get" target="_blank" action="https://www.wyndhamhotels.com/ramada/kissimmee-florida/ramada-gateway-kissimmee/rooms-rates">
+<form class="booking" name="booking" method="get" target="_blank" action="https://www.google.com/">
     <div class="booking-input date">
         <input type="date" class="arrival" name="checkin_date" aria-label="Arrival Date">
     </div>

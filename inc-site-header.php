@@ -45,3 +45,7 @@
         </div>
     </div>
 </header>
+
+<div id="booking-2" class="extra-booking">
+    <?php include("inc-site-booking.php"); ?>
+</div>

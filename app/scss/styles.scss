@@ -1,9 +1,13 @@
 @import 'normalize.scss';
 @import 'variables.scss';
 
+@import 'flatpickr';
 @import 'swiper.scss';
 
 @import 'layout.scss';
 @import 'header.scss';
+@import 'content.scss';
 @import 'galleries.scss';
 @import 'accessibility.scss';
+
+@import 'modifiers.scss';

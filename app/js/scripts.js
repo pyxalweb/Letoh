@@ -431,6 +431,194 @@ toggleBooking();
 
 
 
+// *****************************************************
+//  Booking Form
+//  Flatpickr.js, selected date logic, validation, etc.
+// *****************************************************
+// allows for multiple booking forms by setting the "bookingId" parameter
+const booking = (bookingId) => {
+    // Get DOM elements
+    const bookingForm = bookingId.querySelector('.booking');
+    const bookingSubmit = bookingId.querySelector('.booking-submit');
+    const arrival = bookingId.querySelector('.arrival');
+    const departure = bookingId.querySelector('.departure');
+
+    // default input placeholders
+    const arrivalPlaceholder = 'Arrival Date';
+    const departurePlaceholder = 'Departure Date';
+    arrival.setAttribute('placeholder', arrivalPlaceholder);
+    departure.setAttribute('placeholder', departurePlaceholder);
+
+    // arrival flatpickr instance
+    const arrivalFp = flatpickr(arrival, {
+        minDate: 'today', // ensures user cannot select a date prior to today
+        disableMobile: 'true', // disables native datepicker on mobile
+        monthSelectorType: 'static', // disables 'month' dropdown from flatpickr's datepicker (hope they add yearSelectorType soon)
+        altInput: true,
+        altFormat: "m/d/Y",
+        dateFormat: "Y-m-d",
+        onReady: (a, b, fp) => {
+            fp.altInput.setAttribute('aria-label', arrivalPlaceholder);
+        }
+    });
+
+    // departure flatpickr instance
+    const departureFp = flatpickr(departure, {
+        minDate: new Date().fp_incr(1), // ensures user cannot select a date prior to tomorrow
+        disableMobile: 'true', // disables native datepicker on mobile
+        monthSelectorType: 'static', // disables 'month' dropdown from flatpickr's datepicker (hope they add yearSelectorType soon)
+        altInput: true,
+        altFormat: "m/d/Y",
+        dateFormat: "Y-m-d",
+        onReady: (a, b, fp) => {
+            fp.altInput.setAttribute('aria-label', departurePlaceholder);
+        }
+    });
+
+    // add custom classes to the arrival and departure 'flatpickr-calendar' elements
+    arrivalFp.calendarContainer.classList.add('arrival-calendar');
+    departureFp.calendarContainer.classList.add('departure-calendar');
+
+    // flatpickr's date values
+    let arrivalDateChosen = arrivalFp.selectedDates;
+    let departureDateChosen = departureFp.selectedDates;
+    // js date objects
+    let arrivalDateObj = new Date(arrivalDateChosen);
+    let departureDateObj = new Date(departureDateChosen);
+
+    // update flatpickr's date values
+    const updateDates = () => {
+        // flatpickr date values
+        arrivalDateChosen = arrivalFp.selectedDates;
+        departureDateChosen = departureFp.selectedDates;
+        // js date objects
+        arrivalDateObj = new Date(arrivalDateChosen);
+        departureDateObj = new Date(departureDateChosen);
+    };
+
+    // run 'updateDates' function every time the user selects a new arrival or departure
+    [arrival, departure].forEach((item) => {
+        item.addEventListener('change', () => {
+            updateDates();
+        });
+    });
+
+    // amount of days to add or subtract
+    const defaultDaySpan = 2;
+
+    // add days to departure date
+    const addDays = () => {
+        departureDateObj = new Date(arrivalDateObj);
+        departureDateObj.setDate(arrivalDateObj.getDate() + defaultDaySpan)
+        departureFp.setDate(departureDateObj);
+    };
+
+    // subtract days from arrival date
+    const subDays = () => {
+        arrivalDateObj = new Date(departureDateObj);
+        arrivalDateObj.setDate(departureDateObj.getDate() - defaultDaySpan)
+        arrivalFp.setDate(arrivalDateObj);
+    };
+
+    // 86400000 milliseconds = 1 day
+    let minimumDistance = 86400000;
+    let dayDistance = 0;
+    // get the distance between days as a number of milliseconds
+    let getDayDistance = () => {
+        dayDistance = departureDateObj - arrivalDateObj;
+    };
+
+    // user selects arrival date
+    arrival.addEventListener('change', () => {
+        getDayDistance();
+
+        // if departure date is not selected yet - or -
+        // if arrival date is SAME DAY or AFTER currently selected departure date
+        if ((departureDateChosen.length == 0) || (departureDateChosen.length !== 0 && dayDistance < minimumDistance)) {
+            addDays();
+        }
+
+        updateDates();
+    });
+
+    // user selects departure date
+    departure.addEventListener('change', () => {
+        getDayDistance();
+
+        // if arrival date is not selected yet - or -
+        // if departure date is SAME DAY or BEFORE currently selected arrival date
+        if ((arrivalDateChosen.length == 0) || (arrivalDateChosen.length !== 0 && dayDistance < minimumDistance)) {
+            subDays();
+        };
+
+        updateDates();
+    });
+
+    // validate the form when the submit button is clicked
+    let errorMessageVisible = false; // prevents odd behaviour if user is button mashing
+
+    // create 'booking-error' element and get DOM elements
+    document.querySelector('body').insertAdjacentHTML('beforeend', '<div class="booking-error"><div class="booking-error-content"><p></p></div></div>');
+    const error = document.querySelector('.booking-error');
+    const errorText = document.querySelector('.booking-error p');
+
+    // submit button is clicked
+    bookingSubmit.addEventListener('click', (event) => {
+        // show the error message for X seconds (if one isn't already shown)
+        const errorMessage = (message) => {
+            if (!errorMessageVisible) {
+                errorMessageVisible = true;
+
+                errorText.textContent = message;
+                error.classList.add('show');
+
+                setTimeout(function() {
+                    errorMessageVisible = false;
+                    error.classList.remove('show');
+                }, 4000)
+            };
+
+            event.preventDefault();
+        }
+
+        // validate: errors
+        if (arrivalDateChosen.length == 0 && departureDateChosen.length == 0) {
+            errorMessage('Please select an arrival and departure date');
+        }
+        else if (arrivalDateChosen.length == 0) {
+            errorMessage('Please select an arrival date');
+        }
+        else if (departureDateChosen.length == 0) {
+            errorMessage('Please select a departure date');
+        }
+        // validate: success
+        else {
+            // Google Analytics event tracking
+            try {
+                gtag('event', 'click', {
+                    'event_category': 'Booking',
+                    'event_label': 'Booking Form Submit'
+                });
+            }
+            catch(err) {}
+
+            // submit the form
+            bookingForm.submit();
+
+            event.preventDefault();
+        };
+    });
+};
+
+let booking1 = document.querySelector('#booking-1');
+booking(booking1);
+
+let booking2 = document.querySelector('#booking-2');
+booking(booking2);
+
+
+
+
 // **************************************************
 // Masthead Slideshow Height
 // **************************************************
@@ -491,6 +679,30 @@ const mastheadSlideshowWrapper = document.querySelector('.masthead-slideshow .sw
 const mastheadSlideshowNav = document.querySelectorAll('.masthead-slideshow .swiper .swiper-nav');
 if (mastheadSlideshowWrapper && mastheadSlideshowWrapper.childElementCount <= 3) {
     mastheadSlideshowNav.forEach((element) => {
+        element.classList.add('hide');
+    });
+}
+
+// content slideshow
+const contentSlideshow = new Swiper('.content-slideshow .swiper', {
+    effect: 'fade',
+    loop: true,
+    autoplay: {
+        delay: 5000,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+});
+const contentSlideshowWrapper = document.querySelector('.content-slideshow .swiper .swiper-wrapper');
+const contentSlideshowNav = document.querySelectorAll('.content-slideshow .swiper .swiper-nav');
+if (contentSlideshowWrapper && contentSlideshowWrapper.childElementCount <= 3) {
+    contentSlideshowNav.forEach((element) => {
         element.classList.add('hide');
     });
 }

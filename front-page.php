@@ -7,9 +7,9 @@
 
 <section id="site-masthead" role="complementary" aria-label="Photo Slideshow">
 	<div class="masthead-content">
-    	<h1>The Perfect Destination for Your Family Vacation</h1>
-        <p>Welcome to Ramada Kissimmee Gateway Hotel</p>
-        <a href="/kissimmee-hotel-rooms" class="button">Explore Rooms</a>
+    	<h1>Lorem, ipsum perspiciatis molestias dolor rem fuga</h1>
+        <p>Lorem ipsum dolor sit amet consectetur elit</p>
+        <a href="#" class="button">Learn More</a>
     </div>
 
     <div class="masthead-slideshow homepage arrows-default">
@@ -38,6 +38,46 @@
 
 
 <main>
+	<section class="content pblock-5 pblock-med-4 pblock-sml-3 bg-white">
+		<div class="content-grid cols-2 cols-sml-1 cg-2">
+			<div class="content-item">
+				<div class="content-slideshow arrows-alternate">
+					<div class="swiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-01.jpg" alt="">
+							</div>
+
+							<div class="swiper-slide">
+								<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-02.jpg" alt="">
+							</div>
+
+							<div class="swiper-slide">
+								<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-03.jpg" alt="">
+							</div>
+						</div>
+
+						<div class="swiper-nav swiper-button-next"></div>
+						<div class="swiper-nav swiper-button-prev"></div>
+
+						<!-- <div class="swiper-pagination"></div> -->
+					</div>
+				</div>
+			</div>
+
+			<div class="content-item">
+				<div class="content-heading">
+					<h2>Kissimmee's Finest Hotel</h2>
+					<p>Ramada Kissimmee Gateway Hotel</p>
+				</div>
+
+				<p>One mile from the magic of Walt Disney World®, our relaxing resort-style hotel is the perfect destination for your family vacation or group travel to the Orlando/Kissimmee area. Complimentary scheduled shuttles offer easy transportation to Disney theme parks, Universal Studios Orlando®, SeaWorld® Orlando, and local shopping. Cool off in our two outdoor pools, recharge in our fitness center, or shoot hoops on our basketball court.<br><br>Stay connected with free Wi-Fi or host a meeting or family celebration in 8,000 square feet of event space, including our salons and outdoor gazebo. Enjoy delicious food at our Smokehouse Grill or watch the game at Mulligan's Sports Bar. Whether you are planning a family getaway or a special event, Ramada Kissimmee Gateway by Wyndham is the place to relax, meet, dine, and explore. Discover one of Central Florida's most vibrant and beautiful destinations and experience the vacation of a lifetime at our family-friendly hotel in Orlando.</p>
+
+				<p><a href="#" class="button">Learn More</a></p>
+			</div>
+		</div>
+	</section>
+
 <?php
 	$posts = new WP_Query(array (
 		'post_type' => 'post',

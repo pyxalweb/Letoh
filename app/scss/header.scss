@@ -718,3 +718,34 @@ header#site-header {
     }
   }
 }
+
+
+
+
+// **************************************************
+//  Banners: Booking Error
+// **************************************************
+.booking-error {
+  @extend %banner;
+  z-index: -1; // must always be less than 'banner' and 'header' element
+  background: $primary-color;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: all $transition-long;
+
+  &.show {
+    opacity: 1;
+    z-index: 30000; // must always be more than 'banner' and 'header' element
+  }
+}
+
+.booking-error-content {
+  @extend %banner-content;
+  min-height: 47px;
+
+  p {
+    @extend %banner-text;
+    margin: 0;
+  }
+}
