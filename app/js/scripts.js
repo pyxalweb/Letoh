@@ -1,3 +1,5 @@
+import PhotoSwipeLightbox from '/wp-content/themes/letoh/dist/photoswipe-lightbox.esm.js'; // photoswipe.js
+
 (function () {
 // **************************************************
 //  Get Common DOM elements
@@ -23,6 +25,18 @@ const navOverlayClose = document.querySelector('.overlay-nav .nav-close');
 
 /**** masthead ****/
 const masthead = document.querySelector('.masthead-slideshow .swiper');
+
+
+
+
+// **************************************************
+//  Prevent CSS transitions from firing on page load
+// **************************************************
+// requirement: the 'body' element on each page must have a class of 'preload'
+// requirement: the necessary CSS for the 'preload' class must exist
+window.onload = (event) => {
+    document.querySelector('body').classList.remove('preload');
+};
 
 
 
@@ -132,6 +146,38 @@ const accessibleDropdowns = () => {
     });
 };
 accessibleDropdowns();
+
+
+
+
+// **************************************************
+//  Navigation Menu Traditional
+//  Detect Current Page
+// **************************************************
+const currentPage = () => {
+    const availLinks = document.querySelectorAll('.nav-traditional .nav-item > a');
+
+    const currentUrl = window.location.href; // get the current URL from address bar
+    let currentPage = currentUrl.substring(currentUrl.lastIndexOf('/')); // get the page name
+    const removeAnchor = currentPage.split(/\#.*$/g); // remove any anchor (#) after the page name
+    currentPage = removeAnchor[0]; // the final string
+
+    // find the nav link that matches currentPage string
+    // then add a new class to it and prevent it from being clicked
+    availLinks.forEach(function(element) {
+        const linkHref = element.getAttribute('href');
+
+        if (element.href.indexOf(currentPage) > -1 && currentPage !== '/' && linkHref !== '#') {
+            element.classList.add('current-page');
+            element.addEventListener('click', (event) => {
+                event.preventDefault();
+            });
+        }
+    });
+}
+document.addEventListener('DOMContentLoaded', () => {
+    currentPage();
+});
 
 
 
@@ -619,6 +665,8 @@ booking(booking2);
 
 
 
+
+
 // **************************************************
 // Masthead Slideshow Height
 // **************************************************
@@ -706,6 +754,135 @@ if (contentSlideshowWrapper && contentSlideshowWrapper.childElementCount <= 3) {
         element.classList.add('hide');
     });
 }
+
+// centered slideshow
+const centeredSlideshow = new Swiper('.centered-slideshow .swiper', {
+    slidesPerView: 2,
+    centeredSlides: true,
+    spaceBetween: 20,
+    autoplay: {
+        delay: 5000,
+    },
+    // breakpoints use min-width
+    breakpoints: {
+        1960: {
+            slidesPerView: 5,
+            spaceBetween: 0
+        },
+        1460: {
+            spaceBetween: 120
+        },
+        1360: {
+            spaceBetween: 100
+        },
+        1024: {
+            spaceBetween: 80
+        },
+        700: {
+            spaceBetween: 60
+        }
+    },
+    loop: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
+
+// overlap slideshow
+const overlapSlideshow = new Swiper('.content-overlap .swiper', {
+    effect: 'fade',
+    loop: true,
+    autoplay: {
+        delay: 5000,
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+});
+
+
+
+
+// **************************************************
+//  photoswipe.js
+// **************************************************
+// supports "Captions" - see https://photoswipe.com/v5/docs/caption/
+
+const options = {
+    gallery: '.photoswipe',
+    children: 'a',
+    pswpModule: '/wp-content/themes/letoh/dist/photoswipe-lightbox.esm.js' // doesn't get called until interaction
+};
+
+const lightbox = new PhotoSwipeLightbox(options);
+
+lightbox.on('uiRegister', function() {
+  lightbox.pswp.ui.registerElement({
+    name: 'custom-caption',
+    order: 9,
+    isButton: false,
+    appendTo: 'root',
+    html: 'Caption text',
+    onInit: (el, pswp) => {
+      lightbox.pswp.on('change', () => {
+        const currSlideElement = lightbox.pswp.currSlide.data.element;
+        let captionHTML = '';
+        if (currSlideElement) {
+          const hiddenCaption = currSlideElement.querySelector('.hidden-caption-content');
+          if (hiddenCaption) {
+            // get caption from element with class hidden-caption-content
+            captionHTML = hiddenCaption.innerHTML;
+          } else {
+            // get caption from alt attribute
+            captionHTML = currSlideElement.querySelector('img').getAttribute('alt');
+          }
+        }
+        el.innerHTML = captionHTML || '';
+      });
+    }
+  });
+});
+
+lightbox.init();
+
+
+
+
+// **************************************************
+//  Accordions
+// **************************************************
+const accordionExpand = () => {
+    document.querySelectorAll('.accordion-item').forEach((element) => {
+        const accordionTitle = element.querySelector('.accordion-title a');
+        const accordionContent = element.querySelector('.accordion-content');
+
+        accordionTitle.addEventListener('click', () => {
+            accordionTitle.classList.toggle('expanded');
+            accordionContent.classList.toggle('show');
+        });
+    });
+}
+accordionExpand();
+
+
+
+
+// Created by Alex Winter for LET Group
+// Last Modified: 2022-01-29
+// v1.0
+
+
+
+
+// **************************************************
+//  Extra Code
+//  Add code for THIS SPECIFIC WEBSITE ONLY here:
+//  Please delete as needed!
+// **************************************************
+
+// ...
 
 
 

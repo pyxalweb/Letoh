@@ -1,0 +1,189 @@
+// **************************************************
+//  Map Guide
+// **************************************************
+#poi {
+  display: flex;
+  min-height: 870px;
+
+  @media (max-height: $viewport-small) {
+    min-height: 600px;
+  }
+
+  @media (max-width: $viewport-small) {
+    flex-wrap: wrap;
+  }
+
+
+
+
+  /* interactive map */
+  .map {
+    flex: 1 0 auto;
+
+    @media (max-width: $viewport-small) {
+      flex: 1 0 100%;
+      height: 420px;
+    }
+  }
+
+  .infowindow {
+    width: 100%;
+    font-size: 1rem;
+
+    a.directions {
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+
+  .customIcon {
+    border-radius: 12px;
+    background-color: $black;
+    color: $white;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+
+
+
+  /* list of locations */
+  .widget {
+    flex: 0 1 33%;
+    display: flex;
+    flex-direction: column;
+    padding: 4em 3em 2em 3em;
+    background: $primary-color;
+
+    @media (max-width: $viewport-medium) {
+      padding: 2em 2em 1em 2em;
+    }
+
+    @media (max-width: $viewport-small) {
+      flex: 1 0 100%;
+    }
+
+    h2 {
+      color: $white;
+      font-size: 2.2rem;
+      line-height: 3.5rem;
+
+      @media (max-width: $viewport-medium) {
+        font-size: 1.75rem;
+        line-height: 2.75rem;
+      }
+    }
+  }
+
+  .categories-wrapper {
+    position: relative;
+    max-width: 100%;
+    margin: 0 0 1.5em 0;
+
+    @media (max-width: $viewport-medium) {
+      margin: 0 0 1em 0;
+    }
+
+    &:after {
+      content: "\f107";
+      position: absolute;
+      right: 0.5em;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      font-family: 'Icons-Regular';
+      font-size: 2.5rem;
+      color: $primary-color;
+
+      @media (max-width: $viewport-medium) {
+        font-size: 1.5rem;
+      }
+    }
+
+    select {
+      display: block;
+      width: 100%;
+      padding: 0.4em;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: $white;
+      color: $black;
+      font-size: 1.3rem;
+      line-height: 2.5rem;
+
+      @media (max-width: $viewport-medium) {
+        font-size: 1.25rem;
+        line-height: 2.25rem;
+      }
+    }
+  }
+
+  .pois {
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: none;
+      margin: 0 0 0.75em 0;
+      visibility: hidden;
+      opacity: 0;
+      list-style: none;
+      transition: all $transition-long ease-in-out;
+
+      @media (max-width: $viewport-medium) {
+        margin: 0 0 0.5em 0;
+      }
+
+      &.active {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    a {
+      color: $white;
+      font-size: 1.3rem;
+      line-height: 2.2rem;
+      text-decoration: none;
+
+      @media (max-width: $viewport-medium) {
+        font-size: 1.2rem;
+        line-height: 2.2rem;
+      }
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .poi-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+
+    a {
+      visibility: hidden;
+      color: $white;
+      font-size: 1.25rem;
+      text-decoration: none;
+
+      @media (max-width: $viewport-medium) {
+        font-size: 1.15rem;
+      }
+
+      &.visible {
+        visibility: visible;
+      }
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+}

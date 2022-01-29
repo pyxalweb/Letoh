@@ -140,6 +140,43 @@
 
 
 // **************************************************
+//  Default Pagination (for swiper.js)
+// **************************************************
+.pagination-default {
+  .swiper {
+    list-style: none;
+
+    .swiper-pagination {
+      bottom: 15px;
+      width: 100%;
+      position: absolute;
+      text-align: center;
+      transition: 300ms opacity;
+      transform: translate3d(0, 0, 0);
+      z-index: 10;
+
+      .swiper-pagination-bullet {
+        margin: 0 6px;
+        background: #fff;
+        width: 15px;
+        height: 15px;
+        opacity: 0.5;
+        display: inline-block;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &.swiper-pagination-bullet-active {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+// **************************************************
 //  Masthead Slideshow
 // **************************************************
 #site-masthead {
@@ -197,4 +234,111 @@
       }
     }
   }
+}
+
+
+
+
+// **************************************************
+//  Content Slideshow (swiper.js)
+// **************************************************
+.content-slideshow {
+  .swiper {
+    @extend %swiper-default;
+  }
+}
+
+
+
+
+// **************************************************
+//  Centered Slideshow (swiper.js)
+// **************************************************
+.centered-slideshow-container {
+  overflow: hidden;
+  padding-bottom: 3em;
+}
+
+.centered-slideshow {
+  position: relative;
+  height: auto;
+  max-height: 620px;
+
+  .swiper {
+    overflow: visible;
+    user-select: none;
+  }
+
+  .swiper-wrapper {
+  
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    transition: all .3s ease;
+
+    &.swiper-slide-active {
+      transform: scale(1.2);
+      z-index: 2
+    }
+  }
+}
+
+
+
+
+// **************************************************
+//  Default photoswipe.js styles
+// **************************************************
+.photoswipe-container {
+  .photoswipe {
+    display: grid;
+    gap: 2em;
+  }
+
+  &.four {
+    .photoswipe {
+      grid-template-columns: repeat(4, 1fr);
+
+      @media (max-width: $viewport-small) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1em;
+      }
+
+      @media (max-width: $viewport-tiny) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5em 1em;
+      }
+    }
+  }
+}
+
+
+
+
+// **************************************************
+//  Captions (for photoswipe.js)
+// **************************************************
+.pswp__custom-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 1em;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 400px;
+  padding: 0.1em 0.5em;
+  font-size: $primary-font-size;
+  color: $white;
+}
+
+.pswp__custom-caption a {
+  color: $white;
+  text-decoration: underline;
+}
+
+.hidden-caption-content {
+  display: none;
 }

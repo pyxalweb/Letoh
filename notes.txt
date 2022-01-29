@@ -1,7 +1,7 @@
--
+- Added remaining SCSS, JS, and set scripts.js to load as a module to support photoswipe.js 
 
-* Added flatpickr.js and flatpickr.scss for booking overlay.
-* Added Flatpickr JS to scripts.js. Form validation that sets the departure date 2 days after.the selected arrival date by default and checks to ensure dates are not in the past, etc.
-* Added secondary booking section.
-* Replaced some text with lorem ipsum placeholder text.
-* Added first Homepage content section with 3 placeholder photos and content.
+* Added all remaining SCSS files.
+* Added remaining JS.
+* Added another content section to front-page.php.
+* Change type='text/javascript' to type='module' for scripts.js in functions.php.
+* Added photoswipe.js which will be used later for lightbox style photo galleries.

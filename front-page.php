@@ -37,7 +37,7 @@
 </section>
 
 
-<main>
+<main id="site-content">
 	<section class="content pblock-5 pblock-med-4 pblock-sml-3 bg-white">
 		<div class="content-grid cols-2 cols-sml-1 cg-2">
 			<div class="content-item">
@@ -45,15 +45,15 @@
 					<div class="swiper">
 						<div class="swiper-wrapper">
 							<div class="swiper-slide">
-								<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-01.jpg" alt="">
+								<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-01.jpg" alt="Photo by Christian Koch / xt1an">
 							</div>
 
 							<div class="swiper-slide">
-								<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-02.jpg" alt="">
+								<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-02.jpg" alt="Photo by Christian Koch / xt1an">
 							</div>
 
 							<div class="swiper-slide">
-								<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-03.jpg" alt="">
+								<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-03.jpg" alt="Photo by Christian Koch / xt1an">
 							</div>
 						</div>
 
@@ -77,6 +77,78 @@
 			</div>
 		</div>
 	</section>
+
+	<section class="content mblock-5 mblock-med-4 mblock-sml-3 bg-white-alt">
+		<div class="content-heading center">
+			<h2>Our Rooms</h2>
+			<p>Relax & Enjoy</p>
+		</div>
+
+		<div class="content-grid cols-2 cols-sml-1 g-2 mb-3">
+			<div class="content-item bg-white">
+				<div class="content-slideshow arrows-alternate">
+					<div class="swiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-04.jpg" alt="Photo by Christian Koch / xt1an">
+							</div>
+
+							<div class="swiper-slide">
+								<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-05.jpg" alt="Photo by Christian Koch / xt1an">
+							</div>
+						</div>
+
+						<div class="swiper-nav swiper-button-next"></div>
+						<div class="swiper-nav swiper-button-prev"></div>
+
+						<!-- <div class="swiper-pagination"></div> -->
+					</div>
+				</div>
+
+				<div class="p-1">
+					<h3>Lorem ipsum harum optio</h3>
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, vero impedit voluptate, expedita accusantium pariatur ea sequi dolores cum dolore necessitatibus. Dolorem est quo magni non, quisquam id iure deserunt at rem doloremque a animi. Repellendus quia hic eveniet mollitia voluptatum praesentium consectetur, ut vero?</p>
+				</div>
+			</div>
+
+			<div class="content-item bg-white">
+				<div class="content-slideshow arrows-alternate">
+					<div class="content-slideshow arrows-alternate">
+					<div class="swiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-06.jpg" alt="Photo by Christian Koch / xt1an">
+							</div>
+
+							<div class="swiper-slide">
+								<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-07.jpg" alt="Photo by Christian Koch / xt1an">
+							</div>
+						</div>
+
+						<div class="swiper-nav swiper-button-next"></div>
+						<div class="swiper-nav swiper-button-prev"></div>
+
+						<!-- <div class="swiper-pagination"></div> -->
+					</div>
+				</div>
+				</div>
+
+				<div class="p-1">
+					<h3>Lorem ipsum sorito</h3>
+					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem a iusto harum optio accusamus modi quidem, cumque eligendi eius consequatur voluptatibus, eos iste sit quod provident quos qui corporis tenetur accusantium sed placeat, odio animi! Labore cumque, numquam at facilis doloremque, corrupti nemo nobis odit possimus, beatae!</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="center">
+			<p><a href="/kissimmee-hotel-rooms" class="button">View All Rooms</a></p>
+		</div>
+	</section>
+
+
+
+
+
 
 <?php
 	$posts = new WP_Query(array (
