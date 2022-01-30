@@ -43,6 +43,16 @@ add_action('wp_head','theme_favicon');
 
 
 
+// add class to body element
+function class_name($classes) {
+    $classes[] = 'preload';
+    return $classes;
+}
+add_filter('body_class','class_name');
+
+
+
+
 // hide admin bar
 add_filter( 'show_admin_bar', '__return_false' );
 

@@ -52,7 +52,7 @@ footer#site-footer {
   }
 }
 
-.homepage {
+.home {
   .footer-container {
     padding-bottom: 10em;
 
@@ -236,13 +236,5 @@ footer#site-footer {
         color: $primary-color;
       }
     }
-  }
-}
-
-.footer-brand {
-  text-align: right;
-  
-  @media (max-width: $viewport-medium) {
-    text-align: center;
   }
 }

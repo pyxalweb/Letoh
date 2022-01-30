@@ -1,7 +1,5 @@
-- Added remaining SCSS, JS, and set scripts.js to load as a module to support photoswipe.js 
+- Remaining content sections, footer section, and 'preload' class for the 'body' element.
 
-* Added all remaining SCSS files.
-* Added remaining JS.
-* Added another content section to front-page.php.
-* Change type='text/javascript' to type='module' for scripts.js in functions.php.
-* Added photoswipe.js which will be used later for lightbox style photo galleries.
+* Add remaining content sections to front-page.php -- except for interactive map section which will be added later.
+* Added 'preload' class to 'body' element in functions.php.
+* Added 'footer' HTML to footer.php.
