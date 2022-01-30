@@ -3,12 +3,18 @@
 	include get_template_directory() . '/inc-site-skip-nav.php';
 	include get_template_directory() . '/inc-site-alert.php';
 	include get_template_directory() . '/inc-site-header.php';
+
+	while(have_posts()) { the_post();
 ?>
 
 <section id="site-masthead" role="complementary" aria-label="Photo Slideshow">
 	<div class="masthead-content">
-    	<h1>Lorem, ipsum perspiciatis molestias dolor rem fuga</h1>
-        <p>Lorem ipsum dolor sit amet consectetur elit</p>
+		<h1><?php the_field('heading'); ?></h1>
+
+		<?php if (get_field('sub_heading')): ?>
+			<p><?php the_field('sub_heading'); ?></p>
+		<?php endif; ?>
+
         <a href="#" class="button">Learn More</a>
     </div>
 
@@ -67,11 +73,14 @@
 
 			<div class="content-item">
 				<div class="content-heading">
-					<h2>Kissimmee's Finest Hotel</h2>
-					<p>Ramada Kissimmee Gateway Hotel</p>
+					<h2><?php the_field('intro_heading'); ?></h2>
+					
+					<?php if (get_field('intro_sub_heading')): ?>
+						<p><?php the_field('intro_sub_heading'); ?></p>
+					<?php endif; ?>
 				</div>
 
-				<p>One mile from the magic of Walt Disney World®, our relaxing resort-style hotel is the perfect destination for your family vacation or group travel to the Orlando/Kissimmee area. Complimentary scheduled shuttles offer easy transportation to Disney theme parks, Universal Studios Orlando®, SeaWorld® Orlando, and local shopping. Cool off in our two outdoor pools, recharge in our fitness center, or shoot hoops on our basketball court.<br><br>Stay connected with free Wi-Fi or host a meeting or family celebration in 8,000 square feet of event space, including our salons and outdoor gazebo. Enjoy delicious food at our Smokehouse Grill or watch the game at Mulligan's Sports Bar. Whether you are planning a family getaway or a special event, Ramada Kissimmee Gateway by Wyndham is the place to relax, meet, dine, and explore. Discover one of Central Florida's most vibrant and beautiful destinations and experience the vacation of a lifetime at our family-friendly hotel in Orlando.</p>
+				<?php the_content(); ?>
 
 				<p><a href="#" class="button">Learn More</a></p>
 			</div>
@@ -235,34 +244,9 @@
 
 		<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-16.jpg" alt="Photo by Christian Koch / xt1an">
 	</section>
-
-
-
-
-
-
-<?php
-	$posts = new WP_Query(array (
-		'post_type' => 'post',
-		'ignore_sticky_posts' => 1
-	));
-
-	while($posts->have_posts()) {
-		$posts->the_post();
-?>
-
-	<section class="post-item">
-		<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-		<div class="post-meta">
-			<p><?php the_time('m/d'); ?> - <?php foreach((get_the_category()) as $category) { echo $category->cat_name . ' '; } ?></p>
-		</div>
-	</section>
-
-<?php
-	}
-?>
 </main>
 
 <?php
+	} // end while(have_posts()) { ... }
 	get_footer();
 ?>

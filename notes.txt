@@ -1,5 +1,6 @@
-- Remaining content sections, footer section, and 'preload' class for the 'body' element.
+- Advanced Custom Fields
 
-* Add remaining content sections to front-page.php -- except for interactive map section which will be added later.
-* Added 'preload' class to 'body' element in functions.php.
-* Added 'footer' HTML to footer.php.
+* Installed Advanced Custom Fields plugin.
+* Wrapped all of front_page.php content within have_posts()) { ... } function.
+* Added ACF to masthead section in front_page.php.
+* Added ACF to intro section in front_page.php.
