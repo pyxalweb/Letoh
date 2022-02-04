@@ -46,6 +46,6 @@
     </div>
 </header>
 
-<div id="booking-2" class="extra-booking">
+<div id="booking-2" class="extra-booking" role="form" aria-label="Book a Room">
     <?php include("inc-site-booking.php"); ?>
 </div>

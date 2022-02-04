@@ -9,10 +9,10 @@
 
 <section id="site-masthead" role="complementary" aria-label="Photo Slideshow">
 	<div class="masthead-content">
-		<h1><?php the_field('heading'); ?></h1>
+		<h1><?php the_field('masthead_heading'); ?></h1>
 
-		<?php if (get_field('sub_heading')): ?>
-			<p><?php the_field('sub_heading'); ?></p>
+		<?php if (get_field('masthead_sub_heading')): ?>
+			<p><?php the_field('masthead_sub_heading'); ?></p>
 		<?php endif; ?>
 
         <a href="#" class="button">Learn More</a>
@@ -73,7 +73,9 @@
 
 			<div class="content-item">
 				<div class="content-heading">
-					<h2><?php the_field('intro_heading'); ?></h2>
+					<?php if (get_field('intro_heading')): ?>
+						<h2><?php the_field('intro_heading'); ?></h2>
+					<?php endif; ?>
 					
 					<?php if (get_field('intro_sub_heading')): ?>
 						<p><?php the_field('intro_sub_heading'); ?></p>
@@ -89,8 +91,13 @@
 
 	<section class="content mblock-5 mblock-med-4 mblock-sml-3 bg-white-alt">
 		<div class="content-heading center">
-			<h2>Our Rooms</h2>
-			<p>Relax & Enjoy</p>
+			<?php if (get_field('section_a_heading')): ?>
+				<h2><?php the_field('section_a_heading'); ?></h2>
+			<?php endif; ?>
+
+			<?php if (get_field('section_a_sub_heading')): ?>
+				<p><?php the_field('section_a_sub_heading'); ?></p>
+			<?php endif; ?>
 		</div>
 
 		<div class="content-grid cols-2 cols-sml-1 g-2 mb-3">
@@ -115,8 +122,11 @@
 				</div>
 
 				<div class="p-1">
-					<h3>Lorem ipsum harum optio</h3>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, vero impedit voluptate, expedita accusantium pariatur ea sequi dolores cum dolore necessitatibus. Dolorem est quo magni non, quisquam id iure deserunt at rem doloremque a animi. Repellendus quia hic eveniet mollitia voluptatum praesentium consectetur, ut vero?</p>
+					<?php if (get_field('section_a1_heading')): ?>
+						<h3><?php the_field('section_a1_heading'); ?></h3>
+					<?php endif; ?>
+
+					<?php the_field('section_a1_content'); ?>
 				</div>
 			</div>
 
@@ -143,8 +153,11 @@
 				</div>
 
 				<div class="p-1">
-					<h3>Lorem ipsum sorito</h3>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem a iusto harum optio accusamus modi quidem, cumque eligendi eius consequatur voluptatibus, eos iste sit quod provident quos qui corporis tenetur accusantium sed placeat, odio animi! Labore cumque, numquam at facilis doloremque, corrupti nemo nobis odit possimus, beatae!</p>
+					<?php if (get_field('section_a2_heading')): ?>
+						<h3><?php the_field('section_a2_heading'); ?></h3>
+					<?php endif; ?>
+
+					<?php the_field('section_a2_content'); ?>
 				</div>
 			</div>
 		</div>
@@ -157,8 +170,13 @@
 	<section class="centered-slideshow-container pblock-7 pblock-med-5 pblock-sml-3 bg-white">
 		<div class="content-grid cols-1">
 			<div class="content-item content-heading center">
-				<h2>Magical Amenities</h2>
-				<p>Relaxing Resort-Style Hotel</p>
+				<?php if (get_field('section_b_heading')): ?>
+					<h2><?php the_field('section_b_heading'); ?></h2>
+				<?php endif; ?>
+
+				<?php if (get_field('section_b_sub_heading')): ?>
+					<p><?php the_field('section_b_sub_heading'); ?></p>
+				<?php endif; ?>
 			</div>
 		</div>
 
@@ -203,11 +221,16 @@
 			<div class="content-split-item cg-2 mb-5 mb-med-4 mb-sml-3">
 				<div class="text mb-med-4">
 					<div class="content-heading">
-						<h2>Lorem ipsum karate</h2>
-						<p>Lorem, ipsum dolor.</p>
+						<?php if (get_field('section_c1_heading')): ?>
+							<h2><?php the_field('section_c1_heading'); ?></h2>
+						<?php endif; ?>
+
+						<?php if (get_field('section_c1_sub_heading')): ?>
+							<p><?php the_field('section_c1_sub_heading'); ?></p>
+						<?php endif; ?>
 					</div>
 
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic laboriosam blanditiis saepe quis autem accusamus, nisi distinctio? Maxime officia corrupti earum in inventore, aliquam quisquam suscipit quo est, quasi provident asperiores voluptate velit doloremque debitis at consequatur ipsa repellendus dolores distinctio! Quis pariatur voluptatibus error praesentium repellendus aperiam atque magnam optio accusantium, possimus laboriosam explicabo quam vitae ex doloribus quibusdam ducimus aliquid eum. Repellat eos necessitatibus aut id fugit natus debitis dolor veritatis, ipsam officia assumenda nam placeat tempora obcaecati alias impedit laudantium dolores magni est quidem.</p>
+					<?php the_field('section_c1_content'); ?>
 
 					<p><a href="#" class="button">Learn More</a></p>
 				</div>
@@ -220,11 +243,16 @@
 			<div class="content-split-item cg-2 mb-5 mb-med-4 mb-sml-3">
 				<div class="text mb-med-4">
 					<div class="content-heading">
-						<h2>Lorem ipsum bridgers</h2>
-						<p>Lorem, ipsum dolor.</p>
+						<?php if (get_field('section_c2_heading')): ?>
+							<h2><?php the_field('section_c2_heading'); ?></h2>
+						<?php endif; ?>
+
+						<?php if (get_field('section_c2_sub_heading')): ?>
+							<p><?php the_field('section_c2_sub_heading'); ?></p>
+						<?php endif; ?>
 					</div>
 
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, asperiores nam similique maiores esse numquam sit nostrum quidem sapiente laborum molestiae ea reprehenderit porro nobis animi, aperiam dolore, cum nihil rerum velit eum. Molestias labore animi error illum autem dolor obcaecati iusto? Minus magni adipisci, quas rem corporis quod repellendus ex eveniet libero possimus iusto aliquid ut, sint dolorem optio. Optio corporis ducimus quisquam. Quisquam eius neque sit eos aliquid magnam laboriosam qui ducimus placeat illo eligendi, facere libero provident voluptates error pariatur ex incidunt tempora obcaecati dolores cupiditate ipsam voluptatibus ipsa. Fugit laboriosam voluptatibus magnam eaque quibusdam corporis explicabo!</p>
+					<?php the_field('section_c2_content'); ?>
 
 					<p><a href="#" class="button">Learn More</a></p>
 				</div>
@@ -238,8 +266,13 @@
 
 	<section class="wide-image">
 		<figure class="wide-image-content">
-			<blockquote><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi quis distinctio eveniet officia aut voluptatem dolores ducimus est at? Eos provident dolorum perferendis deleniti excepturi, tempore aspernatur dolore non alias minima consequatur delectus dolor ipsa nisi a perspiciatis atque hic ea sunt lorem atal ipsup quasi!</p></blockquote>
-			<figcaption><cite>Johnny Appleseed</cite></figcaption>
+			<?php if (get_field('testimonial')): ?>
+				<blockquote><p><?php the_field('testimonial'); ?></p></blockquote>
+			<?php endif; ?>
+
+			<?php if (get_field('testimonial')): ?>
+				<figcaption><cite><?php the_field('testimonial_author'); ?></cite></figcaption>
+			<?php endif; ?>
 		</figure>
 
 		<img src="<?php echo get_template_directory_uri(); ?>/temp-dir-photos/homepage-content-16.jpg" alt="Photo by Christian Koch / xt1an">
