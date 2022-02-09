@@ -1,6 +1,11 @@
-- Advanced Custom Fields
+Advanced Custom Fields cont.
 
-* Installed Advanced Custom Fields plugin.
-* Wrapped all of front_page.php content within have_posts()) { ... } function.
-* Added ACF to masthead section in front_page.php.
-* Added ACF to intro section in front_page.php.
+* Added 'acf_text' function to functions.php. This takes two arguments; $acf_field and $element. $acf_field is the ACF field name within the CMS and $element can be any HTML element.
+When using the function, it has a series of if statements. If both the $acf_field and $element arguments are called then echo the ACF text content and wrap it in the appropriate HTML tag. If the $acf_field argument is called but the $element argument is set to null, then simply echo the ACF text content without wrapping it in any HTML. Lastly, if the $acf_field is null (no content entered in the CMS) and the $element is null then do nothing and return.
+* Added variables for every ACF field at the top of front-page.php using the 'get_field' ACF function.
+* Replaced all 'the_field' ACF functions (and if statements) with new custom 'acf_text' functions on front-page.php.
+* Modified the testimonial markup (and CSS) within the 'wide-image' section on front-page.php so that the $testimonial and $testimonial_author ACF text content are only wrapped with a single element each, rather than two elements each. Right now the 'act_text' method is very simple and only supports one wrapping element. I will need to eventually address this and come up with something more sophisticated.
+
+Todo:
+* Add ACF for photos.
+* Add ACF for buttons.

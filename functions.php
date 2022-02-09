@@ -56,4 +56,20 @@ add_filter('body_class','class_name');
 // hide admin bar
 add_filter( 'show_admin_bar', '__return_false' );
 
+
+
+// ACF: Text
+// example: acf_text($masthead_heading, 'h1');
+// example: acf_text($plain_text, null);
+// To Do: Make this more versatile. What if we need more than 1 $element?
+function acf_text($acf_field, $element) {
+    if ($acf_field && $element):
+        echo '<' . $element . '>' . $acf_field . '</' . $element . '>';
+    elseif ($acf_field):
+        echo $acf_field;
+    else:
+        return;
+    endif;
+}
+
 ?>

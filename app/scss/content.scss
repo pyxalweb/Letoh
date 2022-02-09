@@ -433,7 +433,7 @@ main#site-content {
 
   p,
   blockquote,
-  figcaption {
+  cite {
     margin: 0;
     color: $white;
     text-align: center;
@@ -456,7 +456,8 @@ main#site-content {
     }
   }
 
-  figcaption {
+  cite {
+    display: block;
     text-align: center;
 
     &:before {
